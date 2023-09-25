@@ -18,6 +18,11 @@ const PostSchema = new Schema<IQuote>({
         trim: true,
         required: false 
     },
+    author: {
+        type: String,
+        trim: true,
+        required: false 
+    },
     likeCount:{
         type: Number,
         trim: true,
@@ -27,6 +32,15 @@ const PostSchema = new Schema<IQuote>({
         type: Number,
         trim: true,
         required: false 
+    },
+    tags: {
+        type: [String], 
+        required: false 
+    },
+    isPrivate: {
+        type: Boolean,
+        required: false,
+        default: false
     },
     date:{
         type: Date,

@@ -42,5 +42,16 @@ const updateQuote = asyncWrapper(async(req:any, res: any) => {
     res.status(200).json(quote);
 })
 
+const patchQuote = asyncWrapper(async (req: any, res: any) => {
+    const quote = await Quotes.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body }, // Use $set to update existing properties and add new ones
+      { new: true, runValidators: true }
+    );
+  
+    if (!quote) throw Error(`An error occurred while updating this quote ${req.params.id}`);
+    res.status(200).json(quote);
+  });
 
-export {getAllQuotes, getQuote, createQuote, updateQuote, deleteQuote};
+
+export {getAllQuotes, getQuote, createQuote, patchQuote, updateQuote, deleteQuote};

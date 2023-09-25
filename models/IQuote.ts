@@ -3,8 +3,11 @@ interface IQuote{
     title: string,
     body: string,
     poster: string,
+    author: string,
     likeCount: number,
     dislikeCount: number,
+    tags: string[],
+    isPrivate: boolean,
     date: Date
 }
 
