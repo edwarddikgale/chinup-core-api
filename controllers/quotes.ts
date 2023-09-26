@@ -13,13 +13,15 @@ const getAllQuotes = asyncWrapper(
 
 const getRandomQuote = asyncWrapper(
     async (req: any, res: any) => {
-      const count = await Quotes.countDocuments();
-      const randomIndex = Math.floor(Math.random() * count);
-  
-      const randomQuote = await Quotes.findOne().skip(randomIndex);
-  
-      if (!randomQuote) throw Error('No Quotes found!');
-      res.status(200).json({ quote: randomQuote });
+        // Count the number of approved quotes
+        const count = await Quotes.countDocuments({ isApproved: true });
+
+        const randomIndex = Math.floor(Math.random() * count);
+    
+        const randomQuote = await Quotes.findOne({ isApproved: true }).skip(randomIndex);
+
+        if (!randomQuote) throw Error('No Quotes found!');
+        res.status(200).json({ quote: randomQuote });
     }
 );
 
