@@ -42,6 +42,11 @@ const PostSchema = new Schema<IQuote>({
         required: false,
         default: false
     },
+    isApproved: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
     date:{
         type: Date,
         default: Date.now

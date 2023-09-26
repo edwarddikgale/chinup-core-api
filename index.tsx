@@ -36,7 +36,7 @@ app.use(notFound);
 
 mongoose.set('strictQuery', false);
 //process.env.MONGO_URI as string
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3003;
 
 const start = async () =>{
     try{

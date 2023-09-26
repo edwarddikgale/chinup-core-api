@@ -8,6 +8,7 @@ interface IQuote{
     dislikeCount: number,
     tags: string[],
     isPrivate: boolean,
+    isApproved: boolean,
     date: Date
 }
 
