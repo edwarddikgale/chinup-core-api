@@ -11,19 +11,20 @@ const getAllQuotes = asyncWrapper(
     }
 );
 
-const getRandomQuote = asyncWrapper(
-    async (req: any, res: any) => {
-        // Count the number of approved quotes
-        const count = await Quotes.countDocuments({ isApproved: true });
-
-        const randomIndex = Math.floor(Math.random() * count);
-    
-        const randomQuote = await Quotes.findOne({ isApproved: true }).skip(randomIndex);
-
-        if (!randomQuote) throw Error('No Quotes found!');
-        res.status(200).json({ quote: randomQuote });
-    }
-);
+const getRandomQuote = asyncWrapper(async (req: any, res: any) => {
+    // Count the number of approved quotes
+    const count = await Quotes.countDocuments({ isApproved: true });
+  
+    // Generate a random index within the range of approved quotes
+    const randomIndex = Math.floor(Math.random() * count);
+  
+    // Find a random approved quote using the random index
+    const randomQuote = await Quotes.findOne({ isApproved: true }).skip(randomIndex);
+  
+    if (!randomQuote) throw Error('No approved Quotes found!');
+    res.status(200).json({ quote: randomQuote });
+  });
+  
 
 const getQuote = asyncWrapper(async(req:any, res: any, next: any) => {
         const {id: quoteId} = req.params;
