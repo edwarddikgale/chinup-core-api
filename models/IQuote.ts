@@ -6,6 +6,7 @@ interface IQuote{
     author: string,
     likeCount: number,
     dislikeCount: number,
+    viewCount: number,
     tags: string[],
     isPrivate: boolean,
     isApproved: boolean,

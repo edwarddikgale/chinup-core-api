@@ -33,6 +33,11 @@ const PostSchema = new Schema<IQuote>({
         trim: true,
         required: false 
     },
+    viewCount:{
+        type: Number,
+        trim: true,
+        required: false 
+    },
     tags: {
         type: [String], 
         required: false 
